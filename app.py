@@ -30,7 +30,7 @@ def watchlist():
 
     stocks_not_availiable = []
 
-    for i in tqdm(nasdaq_symbols[:150]):
+    for i in tqdm(nasdaq_symbols):
 
         try:
             df = fetch_data(i,interval='5m')
