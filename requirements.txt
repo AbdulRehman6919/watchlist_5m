@@ -3,3 +3,4 @@ pandas
 numpy
 gunicorn==19.9.0
 yfinance
+tqdm
