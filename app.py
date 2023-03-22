@@ -26,7 +26,9 @@ def watchlist():
     try:
 
         response = requests.get(url)
-        data = response.content.decode('utf-8')
+        # data = response.content.decode('utf-8')
+        data = response.text
+
         print("pritning the data: ")
         print(data)
     except:
