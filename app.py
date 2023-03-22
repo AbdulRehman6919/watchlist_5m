@@ -22,8 +22,11 @@ def watchlist():
     dataframe_5m = dataframe_5m.drop(['Datetime'], axis=1)
     
     url = 'http://www.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt'
+
     response = requests.get(url)
     data = response.content.decode('utf-8')
+    print("pritning the data: ")
+    print(data)
 
     nasdaq_tickers = pd.read_csv(io.StringIO(data), delimiter='|')
     nasdaq_symbols = nasdaq_tickers['Symbol'].tolist()[:-1]
