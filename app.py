@@ -9,7 +9,7 @@ from tqdm import tqdm
 import yfinance as yf
 from pandas_market_calendars import get_calendar
 import requests
-
+import traceback
 
 
 app = Flask(__name__)
@@ -23,10 +23,14 @@ def watchlist():
     
     url = 'http://www.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt'
 
-    response = requests.get(url)
-    data = response.content.decode('utf-8')
-    print("pritning the data: ")
-    print(data)
+    try:
+
+        response = requests.get(url)
+        data = response.content.decode('utf-8')
+        print("pritning the data: ")
+        print(data)
+    except:
+        print(traceback.print_exc())
 
     nasdaq_tickers = pd.read_csv(io.StringIO(data), delimiter='|')
     nasdaq_symbols = nasdaq_tickers['Symbol'].tolist()[:-1]
